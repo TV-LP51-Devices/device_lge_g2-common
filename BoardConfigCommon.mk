@@ -25,6 +25,9 @@ TARGET_CPU_VARIANT := krait
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_BOOTLOADER := true
 
+# Assertions
+TARGET_BOARD_INFO_FILE ?= device/lge/g2-common/board-info.txt
+
 TARGET_BOOTLOADER_BOARD_NAME := galbi
 
 # Platform
@@ -33,7 +36,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 
 # Kernel information
 BOARD_KERNEL_BASE     := 0x00000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=g2 androidboot.bootdevice=msm_sdcc.1 androidboot.selinux=permissive user_debug=31 msm_rtb.filter=0x0 mdss_mdp.panel=1:dsi:0:qcom,mdss_dsi_g2_lgd_cmd
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=g2 androidboot.bootdevice=msm_sdcc.1 user_debug=31 msm_rtb.filter=0x0 mdss_mdp.panel=1:dsi:0:qcom,mdss_dsi_g2_lgd_cmd
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x05000000 --tags_offset 0x04800000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -68,7 +71,6 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # EGL
-BOARD_EGL_CFG := device/lge/g2-common/configs/egl.cfg
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
@@ -136,6 +138,8 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_RIL_CLASS := ../../../device/lge/g2-common/ril/
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_LGE_RIL_SYMBOLS
 
+# Releasetools
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_g2
 TARGET_RELEASETOOLS_EXTENSIONS := device/lge/g2-common/releasetools
 
 # Qualcomm time
@@ -143,6 +147,3 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 # Device headers
 TARGET_SPECIFIC_HEADER_PATH := device/lge/g2-common/include
-
-#Fix reboot when the screen is locked
-BOARD_NO_WIFI_HAL := true
