@@ -43,6 +43,11 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x05000000 --tags_offset 0x04800000
 TARGET_KERNEL_SOURCE := kernel/lge/msm8974
 
+# Toolchain information 
+TARGET_GCC_VERSION_EXP := 4.9 
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi- 
+KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-5.2/bin/" 
+
 # Audio
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 BOARD_USES_ALSA_AUDIO:= true
