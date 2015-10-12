@@ -14,21 +14,9 @@
 # limitations under the License.
 #
 
-<<<<<<< HEAD
-
-# Toolchain information
-TARGET_GCC_VERSION_EXP := 4.9
-KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
-KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-5.2/bin/"
-
-# CPU
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-=======
 TARGET_SPECIFIC_HEADER_PATH := device/lge/g2-common/include
 
 # Architecture
->>>>>>> 2ed125d07bda4147e89203dc51fbbac692f721e9
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_BOARD_PLATFORM := msm8974
@@ -139,3 +127,4 @@ BOARD_WLAN_DEVICE           := bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/system/etc/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
+
