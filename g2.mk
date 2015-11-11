@@ -85,6 +85,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth/bcm4335_prepatch.hcd:system/vendor/firmware/bcm4335_prepatch.hcd
 
+# BoringSSL compatability wrapper
+PRODUCT_PACKAGES += \
+    libboringssl-compat \
+    libstlport
+
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8974
@@ -135,11 +140,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     lights.msm8974
 
-# Media
+# OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libdivxdrmdecrypt \
     libdashplayer \
+    libdivxdrmdecrypt \
+    libextmedia_jni \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
@@ -147,10 +153,13 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
+    libOmxVidcCommon \
+    libqcmediaplayer \
     libstagefrighthw \
     qcmediaplayer
 
-PRODUCT_BOOT_JARS += qcmediaplayer
+PRODUCT_BOOT_JARS += \
+    qcmediaplayer
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
@@ -180,6 +189,10 @@ PRODUCT_PACKAGES += \
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_g2
+
+# RIL symbols
+PRODUCT_PACKAGES += \
+    liblge
 
 # Sensors
 PRODUCT_COPY_FILES += \
