@@ -24,9 +24,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
-
-# Assertions
-TARGET_BOARD_INFO_FILE ?= device/lge/g2-common/board-info.txt
+USE_CLANG_PLATFORM_BUILD := true
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := galbi
@@ -37,10 +35,10 @@ TARGET_NO_RADIOIMAGE := true
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := device/lge/g2-common/releasetools/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=g2 androidboot.bootdevice=msm_sdcc.1 user_debug=31 msm_rtb.filter=0x0 mdss_mdp.panel=1:dsi:0:qcom,mdss_dsi_g2_lgd_cmd
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=g2 androidboot.bootdevice=msm_sdcc.1 user_debug=31
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x05000000 --tags_offset 0x04800000
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x05000000 --tags_offset 0x00000100
 TARGET_KERNEL_SOURCE := kernel/lge/msm8974
 
 # Toolchain information 
@@ -49,9 +47,9 @@ TARGET_KERNEL_SOURCE := kernel/lge/msm8974
 # KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-5.2/bin/" 
 
 # Audio
+AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 BOARD_USES_ALSA_AUDIO := true
-AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
@@ -62,7 +60,6 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
-COMMON_GLOBAL_CFLAGS += -DLG_CAMERA_HARDWARE
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Charger
@@ -73,6 +70,7 @@ COMMON_GLOBAL_CFLAGS += \
 
 # CMHW
 BOARD_HARDWARE_CLASS := device/lge/g2-common/cmhw/
+TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/lge_touch/touch_gesture"
 
 # Display
 HAVE_ADRENO_SOURCE := false
@@ -114,9 +112,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_g2
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-COMMON_GLOBAL_CPPFLAGS += -DNO_SECURE_DISCARD
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/lge/g2-common/releasetools
